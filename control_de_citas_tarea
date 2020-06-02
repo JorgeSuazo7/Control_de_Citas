@@ -1,0 +1,309 @@
+package control_de_citas_tarea.pkg3;
+
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Scanner;
+import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.Date;
+
+/**
+ *
+ * @author JorgeSuazo
+ */
+public class Control_de_Citas_Tarea3 {
+    
+
+    /**
+     * @param args the command line arguments
+     * @throws java.text.ParseException
+     */
+    public static void main(String[] args) throws ParseException {
+        // TODO code application logic here
+        Scanner Entrada = new Scanner(System.in);
+        
+        LocalTime horaactual = LocalTime.now();
+        int opcion = 0;
+        
+        
+        System.out.println("------------------MENU PRINCIPAL------------------");
+        System.out.println("Seleccioe una Categoria");
+        
+        
+            System.out.println("1---Citas");
+            System.out.println("2---Diagnosticos");
+            System.out.println("3---Reportes");
+            System.out.println("4-- Salir");
+            opcion = Entrada.nextInt();
+            
+            switch (opcion){
+                case 1:
+                    cita();
+                    break;
+                case 2:
+                    Diagnosticos();
+                    break;
+                case 3:
+                    Reportes();
+            }
+    }   
+            
+                
+            public static void cita() throws ParseException {
+                Scanner Entrada =new Scanner(System.in);
+                int opcion1;
+                int opcion2;
+                int opcion3;
+                
+                
+                System.out.println("**********MENU CITAS*********");
+                System.out.println("1---Agendar Cita");
+                System.out.println("2---Re-Agendar Cita");
+                System.out.println("3---Cancelar cita");
+                System.out.println("4---Menu Incio");
+                opcion1 = Entrada.nextInt();
+                switch(opcion1){
+                    case 1:
+                
+                        AgendarCita();
+                 
+                     break;
+                    
+                    case 2:
+                        
+                        reagendar();
+                    
+                    break;
+            
+                    case 3:
+                        cancelarcita();
+                        
+                        break;
+                        
+                    case 4:
+                        cita();
+                        
+                        break;
+                    }
+                }
+
+               public static void AgendarCita() throws ParseException{
+                   Scanner Entrada =new Scanner(System.in);
+                String[] datonombre = new String[10];
+                String[] datosmascota = new String[10];
+                {
+                    int fechaString = 0;
+                    String[] datosfecha = new String[fechaString];
+                }
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("*******AGENDAR CITA*******");
+            System.out.println("-----------------Ingrese los Datos por favor-------------------");
+           
+            
+            System.out.println("Ingrese el nombre del cliente");
+            datonombre[1] = scanner.nextLine();
+            
+            System.out.println("Ingrese el nombre de la mascota");
+            datosmascota[0] = scanner.nextLine();
+            
+            System.out.println("Ingrese la fecha de la cita");
+             
+               System.out.print("Ingrese fecha en el siguiente formato (yyyy-mm-dd): ");
+            String fechaString;
+            fechaString = scanner.nextLine();
+
+                  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+                   Date fecha = sdf.parse(fechaString);
+
+                   Calendar calendario = Calendar.getInstance();
+
+                   calendario.setTime(fecha);
+            
+            System.out.println("Ingrese la hora de la cita");
+            
+               String hora24;
+               System.out.print("Escriba la hora en formato 24H:");
+               hora24=Entrada.next();
+               String[] horaminutos = hora24.split(":");
+               String hora = horaminutos[0];
+               String minutos = horaminutos[1];
+                        
+                System.out.println("-------------------------------------------------------------------------------");
+            System.out.println("***********Los Datos han sido Ingresados*********\n");
+                 
+                 System.out.println("Nombre del Cliente :"+"  "+datonombre[1]);
+                 System.out.println("Nombre de la Mascota :"+"  "+datosmascota[0]);
+                 System.out.println("Fecha de la Cita :"+" "+"  "+fechaString);
+                 System.out.println("Hora de la Cita :"+" "+hora +":"+minutos);
+                 
+                    System.out.println("--------CITA CREADA CON EXITO-------------");
+            }
+
+    public static void reagendar() throws ParseException {
+        
+        Scanner scanner = new Scanner(System.in);
+        String newnombre;
+        String newmascota;
+        String[] datonombre = new String[10];
+            System.out.println("*******AGENDAR CITA*******");
+            System.out.println("-----------------Ingrese los nuevos Datos por favor-------------------");
+           
+            
+            System.out.println("Ingrese el nombre del cliente");
+            newnombre = scanner.nextLine();
+            
+            System.out.println("Ingrese el nombre de la mascota");
+            newmascota = scanner.nextLine();
+            
+            System.out.println("Ingrese la hora de la cita");
+            
+               String hora24;
+               {
+                    int fechaString = 0;
+                    String[] datosfecha = new String[fechaString];
+                }
+               System.out.print("Escriba la hora en formato 24H:");
+               hora24=scanner.next();
+               String[] horaminutos = hora24.split(":");
+               String hora = horaminutos[0];
+               String minutos = horaminutos[1];
+               
+               
+               System.out.print("Ingrese fecha en el siguiente formato (yyyy-mm-dd): ");
+               String fechaString;
+               fechaString = scanner.nextLine();
+
+                  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+                   Date fecha = sdf.parse(fechaString);
+
+                   Calendar calendario = Calendar.getInstance();
+
+                   calendario.setTime(fecha);
+                }
+
+     public static void cancelarcita() {
+         Scanner scanner = new Scanner(System.in);
+        int op1; 
+         System.out.println("Desea Cancelar la cita");System.out.println("1---si");
+         System.out.println("1---SI");
+         System.out.println("2---NO");
+         
+         op1 = scanner.nextInt();
+    
+           if(op1 == 1){  
+               System.out.println("La Cita ha sido Cancelada");
+           }
+           else
+           {
+               System.out.println("La cita no ha sido Cancelada");
+           }
+         
+         
+                
+                
+         
+    }
+
+    public static void Diagnosticos() throws ParseException {
+        Scanner Entrada = new Scanner(System.in);
+        System.out.println("**********MENU DIAGNOSTICO*********");
+                System.out.println("1---Registrar Diagnostico");
+                System.out.println("2---Modificar Diagnostico");
+                System.out.println("3---Eliminar Diagnostico");
+                System.out.println("4---Menu Incio");
+                int opcion1 = Entrada.nextInt();
+                
+                switch (opcion1){
+                    case 1:
+                        Registrar();
+                        
+                        break;
+                        
+                    case 2:
+                        ModificarDiagnostico();
+                        
+                        break;
+                        
+                    case 3:
+                        EliminarDiagnostico();
+                        
+                        break;
+                        
+                    case 4:
+                        cita();
+              
+                }
+    }    
+
+    public static void Registrar() {
+        Scanner scanner =new Scanner(System.in);
+        String[] NombreCliente = new String[10];
+        String[] NombreMascota = new String[10];
+        String[] Diagnost = new String[100];
+        System.out.println("Ingrese el nombre del cliente");
+            NombreCliente[0] = scanner.nextLine();
+            
+            System.out.println("Ingrese el nombre de la mascota");
+            NombreMascota[0] = scanner.nextLine();
+            
+            System.out.println("Ingrese el Diagnostico");
+            Diagnost[0] = scanner.nextLine();
+            
+             
+            
+    }    
+    
+
+    public static void ModificarDiagnostico() {
+        
+         Scanner scanner =new Scanner(System.in);
+        String[] NombreCliente = new String[10];
+        String[] NombreMascota = new String[10];
+        String[] Diagnost = new String[100];
+        System.out.println("Ingrese el nombre del cliente");
+            NombreCliente[0] = scanner.nextLine();
+            
+            System.out.println("Ingrese el nombre de la mascota");
+            NombreMascota[0] = scanner.nextLine();
+            
+            System.out.println("Ingrese el Diagnostico");
+            Diagnost[0] = scanner.nextLine();
+        
+    }
+
+    public static void EliminarDiagnostico() {
+       
+        Scanner scanner =new Scanner(System.in);
+        System.out.println("Desea Eliminar el Diagnostico");
+        System.out.println("1------SI");
+        System.out.println("2------NO");
+        int op2 = scanner.nextInt();
+        
+        if(op2 == 1){
+            System.out.println("Se ha Eliminado con exito");
+        }
+        else
+        {
+            System.out.println("El Dignostico nose ha eliminado");    
+        }
+    }
+
+    public static void Reportes() {
+        Scanner scanner =new Scanner(System.in);
+       
+        System.out.println("---------------REPORTES------------------\n");
+        System.out.println("**********MENU REPORTES**********");
+                System.out.println("1---Reporte Citas");
+                System.out.println("2---Reporte Diagnostico");
+                System.out.println("4---Menu Incio");
+                int num = scanner.nextInt();
+                
+                switch(num){
+                    case 1:
+                        
+                }
+    }
+}  
